@@ -1,0 +1,31 @@
+npm init
+npm install redux  --save
+
+
+const {createStore} =require('redux');
+
+const intialState ={
+    age:22
+};
+const myReducer= (state = intialState , action) =>{
+    const newState = {...state};
+
+    if(action.type === 'ADD'){
+        newState.age++;
+    }
+    return newState;
+}
+
+const store = createStore(myReducer);
+
+
+store.subscribe(() =>{
+    console.log(store.getState());
+});
+
+store.dispatch({type:'ADD'});
+store.dispatch({type:'ADD'});
+store.dispatch({type:'ADD'});
+store.dispatch({type:'ADD'});
+
+//console.log(JSON.stringify(store.getState()));
